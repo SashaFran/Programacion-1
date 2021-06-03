@@ -1,3 +1,4 @@
+package arreglos;
 import java.util.Random;
 
 //Hacer un programa que dado un arreglo de enteros de tamaño 10 que se encuentra

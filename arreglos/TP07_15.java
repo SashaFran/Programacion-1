@@ -1,3 +1,4 @@
+package arreglos;
 //Hacer un programa que dado el arreglo definido y precargado elimine del
 //arreglo todas las ocurrencias de una secuencia patrón dada por otro arreglo
 //de iguales características (solo tiene esa secuencia). Al eliminar se pierden los

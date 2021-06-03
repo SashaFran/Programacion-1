@@ -1,3 +1,4 @@
+package arreglos;
 import java.util.Random;
 
 //Hacer un programa que dado el arreglo definido y precargado elimine todas

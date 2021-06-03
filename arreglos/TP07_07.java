@@ -1,3 +1,4 @@
+package arreglos;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 //Hacer un programa que dado un arreglo ordenado creciente de enteros

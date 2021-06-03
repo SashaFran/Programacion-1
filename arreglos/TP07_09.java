@@ -1,3 +1,4 @@
+package arreglos;
 /*
 Dado un arreglo DESORDENADO de numeros entre 1 y 9 de tamanio MAX que tiene los elementos sin orden, 
 se pide lo siguiente:
