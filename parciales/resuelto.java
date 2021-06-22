@@ -1,0 +1,128 @@
+package parciales;
+
+public class resuelto {
+
+	public static final int maxFilas = 4;
+	public static final int maxColumnas = 20;
+	
+	public static void cargarMatrices(char matriz[][]) {
+	}
+	
+	public static void recorrerFilas (char matrizA[][], char matrizB[][]) {
+		for(int A = 0; A < maxFilas; A++) {
+			int secuenciaConMasRepetidos = buscarConMasRepetidos(matrizA[A]);
+			int secuenciaSiguienteCentral = buscarSiguienteCentral(matrizB[A]);
+			eliminarSecuencia(matrizA[A], matrizB[A], secuenciaConMasRepetidos, secuenciaSiguienteCentral);
+		}
+	}
+	
+	public static void eliminarSecuencia (char arregloA[], char arregloB[], int inicioSecuenciaConMasRepetidos, int inicioSecuenciaSiguienteCentral) {
+		int inicioMasRepetidos = inicioSecuenciaConMasRepetidos;
+		int finMasRepetidos = buscarFin(arregloA, inicioMasRepetidos);
+		int repetidosDeSecuencia = buscarEnSecuenciaRepetidos(arregloA, inicioMasRepetidos, finMasRepetidos);
+		
+		int inicioCentralSiguiente = inicioSecuenciaSiguienteCentral;
+		int finCentralSiguiente = buscarFin(arregloB, inicioCentralSiguiente);
+		int repetidosDeSecuenciaCS = buscarEnSecuenciaRepetidos(arregloB, inicioCentralSiguiente, finCentralSiguiente);
+		
+		if (((repetidosDeSecuencia%2) == 0) && (repetidosDeSecuencia == repetidosDeSecuenciaCS)) {
+			while (arregloA[inicioMasRepetidos] != ' ') {
+				for(int a = inicioMasRepetidos; a <= finMasRepetidos; a++) {
+					arregloA[inicioMasRepetidos] = arregloA[inicioMasRepetidos+1];
+				}		
+			}
+		}
+	}
+	
+	public static int buscarInicio(char arreglo[], int pos) {
+		int inicio = pos;
+		while (arreglo[inicio] != ' ') {
+			inicio--;
+		}
+		while (arreglo[inicio] == ' ') {
+			inicio++;
+		}
+		if (inicio < maxColumnas)
+			return inicio;		
+		else
+			return -1;
+	}
+	
+	public static int buscarFin(char arreglo[], int pos) {
+		int fin = pos;
+		while (fin != ' ') {
+			fin++;
+		}
+		if (fin < maxColumnas)
+			return fin-1;
+		else
+			return -1;
+	}
+	
+	public static int buscarEnSecuenciaRepetidos (char arreglo[], int inicio, int fin) {
+		int sumaRepetidos = 0;
+		for(int a = inicio; a <= fin; a++) {
+			for(int b = inicio+1; b <= fin; b++) {
+				if (arreglo[a] == arreglo[b]) {
+					sumaRepetidos++;
+				}
+			}
+		}
+		return sumaRepetidos;
+	}
+	
+	public static int buscarConMasRepetidos(char arreglo[]) {
+		int inicioA, finA;
+		int masCantRepetidos = 0;
+		int secuenciaConMasRepetidos = 0;
+		inicioA = buscarInicio(arreglo, 0);
+		while(inicioA != -1) {
+			finA = buscarFin(arreglo, inicioA);
+			if(finA != -1) {
+				int repetidosDeSecuencia = buscarEnSecuenciaRepetidos(arreglo, inicioA, finA);
+				if (repetidosDeSecuencia > secuenciaConMasRepetidos) {
+					masCantRepetidos = repetidosDeSecuencia;
+					secuenciaConMasRepetidos = inicioA;
+				}
+				inicioA = buscarInicio(arreglo, finA+1);
+			}
+		}
+		return secuenciaConMasRepetidos;
+	}
+
+	public static int buscarSiguienteCentral (char arreglo[]) {
+		int inicioCentral = buscarInicio(arreglo, maxColumnas/2);
+		int finCentral = buscarFin(arreglo, inicioCentral);
+		int inicioSemiCentral = buscarInicio(arreglo, finCentral+1);
+		return inicioSemiCentral;
+	}
+	
+	public static void main(String[] args) {
+		char matrizA[][] = new char [maxFilas][maxColumnas];
+		char matrizB[][] = new char [maxFilas][maxColumnas];
+		cargarMatrices(matrizA);
+		cargarMatrices(matrizB);
+		recorrerFilas(matrizA, matrizB);
+	}
+	/*
+	Suponer que se tienen dos matrices A y B de secuencias (de caracteres letras minusculas separados por espacios) 
+	de tamaño MAXFIL x MAXCOL (cada fila empieza y termina con caracteres espacios), 
+	que están precargadas, y además se tiene/n el/los siguiente/s metodo/s (se supone que existe/n  y esta/n implementado/s):
+
+	_un metodo que retorna el indice inicial de la secuencia que tiene más caracteres repetidos de un arreglo de secuencias 
+	(de caracteres letras minusculas separados por espacios) de tamanio MAXCOL (que empieza y termina con espacios).
+
+	_un metodo que permite obtener el indice inicial de la secuencia que le sigue a la secuencia central 
+	(central porque justo al medio del arreglo esta parte de esa secuencia) de un arreglo de secuencias 
+	(de caracteres letras minusculas separados por espacios) de tamanio MAXCOL (que empieza y termina con espacios).
+
+	Se pide realizar un programa completo que 
+	(sin utilizar arreglos o matrices auxiliares extras a las mencionadas, ni realizar declaraciones explícitas de las matrices):
+
+	_contenga la definicion de el/los encabezado/s de el/los metodo/s mencionado/s como preexistente/s que figura/n en el enunciado 
+	(excepto los de carga de datos en matrices, que solamente se invocan).
+
+	_para cada fila de A elimine la secuencia con mas caracteres repetidos de la fila,
+	si la misma tiene cantidad par de vocales y ademas es igual a la secuencia 
+	*/
+}
