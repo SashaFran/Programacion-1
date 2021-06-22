@@ -1,0 +1,38 @@
+
+
+
+
+
+
+
+// METODO PARA BUSCAR LA SECUENCIA CON MAYOR SUMA EN TODA LA MATRIZ
+(EN EL MAIN)
+imprimir_suma_cada_secuencia(matriz);
+
+(METODO)
+public static void imprimir_suma_cada_secuencia(int[][]mat) {
+		int mayorSumaFila, mayorSumaMatriz = 0;
+    	for (int fila = 0; fila < MAXFILA; fila++) {
+            mayorSumaFila = buscar_suma_mayor_secuencia(mat[fila]);
+            if(mayorSumaFila > mayorSumaMatriz) {
+            	mayorSumaMatriz = mayorSumaFila;
+            }
+        }
+    	System.out.println("El valor de la mayor suma entre las secuencias de la matriz es "+mayorSumaMatriz);
+    }
+	
+
+	public static int buscar_suma_mayor_secuencia(int [] mat){
+		int inicio,fin;
+		inicio = 0;
+		fin = -1;
+		int suma = 0;
+		while ((inicio < MAXCOLUMNA)){
+			inicio = obtener_inicio_secuencia(mat,fin+1);
+			if (inicio < MAXCOLUMNA){
+				fin = obtener_fin_secuencia(mat,inicio);
+				suma = obtener_suma(mat,inicio,fin); 		
+			}
+		}
+		return suma;	
+	}

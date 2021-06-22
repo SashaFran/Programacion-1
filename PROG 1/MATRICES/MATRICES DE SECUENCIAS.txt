@@ -1,0 +1,15 @@
+// MATRICES DE SECUENCIAS (public static final double probabilidad_letra = 0.4; public static final double probabilidad_numero = 0.4;)
+// IMPRIMIR MATRIZ CHAR
+public static void imprimir_matriz_char(char [][] mat){
+	for (int fila = 0; fila < MAXFILA; fila++){
+		imprimir_arreglo_secuencias_char(mat[fila]);
+		System.out.println("");
+	}
+}
+
+public static void imprimir_arreglo_secuencias_char(char [] arr){
+		System.out.print("|");
+		for (int pos = 0; pos < MAXCOLUMNA; pos++){
+			System.out.print(arr[pos]+"|");
+		}
+	}

@@ -1,0 +1,8 @@
+/* Corrimiento a izquierda en arreglo */
+public static void corrimiento_izq(int [] arrenteros, int pos) {
+    int pos = posicion;
+    while(pos < MAX-1) {
+        arrenteros[pos] = arrenteros[pos+1];
+        pos++;
+    }
+}

@@ -1,0 +1,5 @@
+/* Caracter minuscula */
+((caracter >= 'a') && (caracter <= 'z'))
+
+/* Caracter MAYUSCULA */
+((caracter >= 'A') && (caracter <= 'Z'))

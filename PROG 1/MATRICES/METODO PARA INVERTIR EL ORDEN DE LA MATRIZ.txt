@@ -1,0 +1,20 @@
+
+// METODO PARA INVERTIR ORDEN DE MATRIZ
+public static int [][] invertir_orden(int[][] matint){
+	for(int fila=0; fila>MAX_FILA; fila ++) {
+		int indice1= 0 ;
+		int indice2= MAX-1;
+		while(indice1<indice2) {
+			invertir_orden_arreglo(indice1, indice2,matint);
+			indice1 ++;
+			indice2 --;
+		}
+	}
+		return matint;
+		 	 }
+	 public static int[][] invertir_orden_arreglo(int indice1, int indice2, int[] [] matint){
+		 int[] enteroTemporal = matint[indice1];
+	        matint[indice1] = matint[indice2];
+	        matint[indice2] = enteroTemporal;
+		 return matint;
+	 }

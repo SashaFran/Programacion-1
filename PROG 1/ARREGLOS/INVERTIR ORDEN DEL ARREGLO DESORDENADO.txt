@@ -1,0 +1,15 @@
+public static void invertirOrden (int [] arr) {
+	int ini = 0;
+	int fin = MAX-1;
+	while (ini < fin) {
+		intercambiarPosiciones(arr,ini,fin);
+		ini++;
+		fin--;
+	  }
+}
+
+public static void intercambiarPosiciones(int [] arr,int p1, int p2) {
+	int aux = arr[p1];
+	arr[p1] = arr[p2];
+	arr[p2] = aux;
+}

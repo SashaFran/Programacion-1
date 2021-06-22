@@ -1,0 +1,15 @@
+/* Carga de arreglo por teclado */
+public static void cargar_arreglo_int(int [] arr){
+    BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+    try{
+        for (int pos = 0; pos < MAX; pos++){
+            
+            System.out.println("Ingrese un entero: ");
+            
+            arr[pos] = Integer.valueOf(entrada.readLine());
+        }
+    }
+    catch(Exception exc){
+        System.out.println(exc);
+    }
+}

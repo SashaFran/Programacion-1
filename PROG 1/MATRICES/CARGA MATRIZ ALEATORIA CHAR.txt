@@ -1,0 +1,11 @@
+
+
+// CARGAR MATRIZ ALEATORIA CHAR
+public static void cargar_matriz_aleatorio_char(char [][] mat){
+		Random r = new Random();
+		for (int fila = 0; fila < MAXFILA; fila++){
+			for (int columna = 0; columna < MAXCOLUMNA; columna++){
+				mat[fila][columna]=(char)(r.nextInt(26) + 'a');
+			}
+		}
+	}

@@ -1,0 +1,21 @@
+// CARGAR MATRIZ ALEATORIRA CON SECUENCIAS DE TIPO CHAR
+public static void cargar_matriz_aleatorio_secuencias_char(char [][] mat){
+	for (int fila = 0; fila < MAXFILA; fila++){
+		cargar_arreglo_aleatorio_secuencias_char(mat[fila]);
+	}
+	System.out.println("");
+}
+
+public static void cargar_arreglo_aleatorio_secuencias_char(char [] arr){
+		Random r = new Random();
+		arr[0] = ' ';
+		arr[MAXCOLUMNA-1] = ' ';
+		for (int pos = 1; pos < MAXCOLUMNA-1; pos++){
+			if (r.nextDouble()>probabilidad_letra){
+				arr[pos]=(char)(r.nextInt(26) + 'a');
+			}
+			else{
+				arr[pos]=' ';				
+			}
+		}
+	}

@@ -1,0 +1,21 @@
+// CARGAR MATRIZ ALEATORIRA CON SECUENCIAS DE TIPO INT
+public static void cargar_matriz_aleatorio_secuencias_int(int [][] mat){
+	for (int fila = 0; fila < MAXFILA; fila++){
+		cargar_arreglo_aleatorio_secuencias_int(mat[fila]);
+	}
+	System.out.println("");
+}
+
+public static void cargar_arreglo_aleatorio_secuencias_int(int [] arr){
+		Random r = new Random();
+		arr[0] = 0;
+		arr[MAXCOLUMNA-1] = 0;
+		for (int pos = 1; pos < MAXCOLUMNA-1; pos++){
+			if (r.nextDouble()>probabilidad_numero){
+				arr[pos]=(r.nextInt(MAXVALOR+MINVALOR-1) + MINVALOR); 
+			}
+			else{
+				arr[pos]=0;				
+			}
+		}
+	}

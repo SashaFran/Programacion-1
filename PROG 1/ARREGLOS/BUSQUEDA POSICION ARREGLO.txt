@@ -1,0 +1,8 @@
+/* Busqueda de posicion en arreglo */
+public static int buscar_pos_arreglo_ord_crec(int[] arr,int numero) {
+    int pos = 0;
+    while ((pos<MAX)&&(arr[pos]<numero)){
+        pos++;
+    }
+    return pos;
+}

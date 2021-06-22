@@ -1,0 +1,8 @@
+
+
+// IMPRIMIR PROMEDIOS FILAS
+public static void imprimir_promedios_filas (int[][] mat){
+	for (int fila = 0 ; fila < MAXFILA; fila++){
+		System.out.println("Promedio de la fila "+fila+" es "+promedio_fila(mat,fila));
+	}
+}

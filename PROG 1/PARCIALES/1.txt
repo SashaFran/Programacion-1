@@ -1,0 +1,71 @@
+package parciales;
+/*Suponer que se tienen dos matrices A y B de secuencias (de caracteres letras minusculas separados por espacios) de tamanio MAXFIL x MAXCOL (cada fila empieza y termina
+con caracteres espacios), que estan precargadas, y ademas se tiene/n el/los siguiente/s metodo/s (se supone que existe/n y esta/n implementado/s):
+_un metodo que retorna el indice inicial de la secuencia cuya cantidad de vocales es la mayor de todas de un arreglo de secuencias (de caracteres letras minusculas separados por espacios)
+de tamanio MAXCOL (que empieza y termina con espacios).
+
+Se pide realizar un programa completo que (sin utilizar arreglos o matrices auxiliares extras a las mencionadas, ni realizar declaraciones explícitas
+de las matrices):
+_contenga la definicion de el/los encabezado/s de el/los metodo/s mencionado/s como preexistente/s que figura/n en el enunciado (excepto los de carga de datos en matrices, que solamente se invocan).
+_para cada fila de A elimine de cada secuencia de la fila los primeros 4 caracteres que esten incluidos en la secuencia con mas vocales que se encuentra de dicha fila en B.*/
+public class ejemploParcial {
+	public class MODELOPARCIAL {
+		public static final int MAXFIL = M ; // Como no tiene un tamaÃ±o definido use pseudovalores 
+		public static final int MAXCOL = N ;
+		public static void main (String[] args) {
+			char [][] matcharA = new char [MAXFIL][MAXCOL];
+			char [][] matcharB = new char [MAXFIL][MAXCOL];
+			//declaraciones de matrices
+			EliminarCaracteresDeSecuencias(matcharA,matcharB); // A y B Representan a las matrices que no es necesario cargarlas
+		}
+
+		public static int SecuenciaConMasVocales(char [] arr){
+
+			//declaracion del encabezado dado por enunciado
+			//retorna el indice inicial de la secuencia cuya cantidad de vocales es la mayor de todas de un arreglo de secuencias
+
+		} 
+
+
+		public static void EliminarCaracteresDeSecuencias(char [][] matcharA, char [][] matcharB) { //metodo para poder trabajar las matrizes como arreglos
+			for (int fila = 0; fila< MAXFIL; fila++) {
+				EliminarCaracteresPorFila(matcharA[fila], matcharB[fila]);
+			}
+		}
+
+		public static void EliminarCaracteresPorFila(char [] arregloA, char [] arregloB) {
+			int i = 0;
+			while ((arregloA[i]!=' ')&&(arregloA[i-1]==' ')){ //Mientras sea la posicion inicial de la fila se ejecute el siguiente metodo de eliminacion
+				EliminePrimeros4Char(arregloA,i,arregloB);
+				i++;
+			}
+		}
+		public static void EliminePrimeros4Char(char [] arr, int pos, char [] arrSecuencias){   //arr es el arreglo en a, etc etc
+			int posParaComparar = SecuenciaConMasVocales(arrSecuencias);                        //pos es la variable que indica la posicion inicial de la secuencia
+			int i = pos;                                                                        //con mas vocales del arrSecuencia
+			int cont = 0;
+			while ((arr[i]!=' ')&&(cont<4)) {
+				if (SeEncuentra(arr[i],arrSecuencias,posParaComparar)) { //funcion que devuelve un valor boolean, verdadero si el caracter esta en el arreglo                
+					arr[i]=' ';
+					cont++;
+					// aca se podria ejecutar un corrimientoA_Izq/A_Derecha(pasando como parametros la posicion y el arregl //arr, i)
+				}
+				i++;
+			}
+		}
+		//caracter = dato que esta en arreglo (fila en A)
+		//arr = arrSecuencias o fila de la matriz B
+		//pos = donde empieza la secuencia de B
+		public static boolean SeEncuentra(char caracter, char [] arr, int pos) {
+			int i = pos;
+			while(arr[i]!=' ') {
+				if (caracter==arr[i]) {
+					return true;
+				}
+				i++;
+			}
+			return false;
+		}
+
+
+	}

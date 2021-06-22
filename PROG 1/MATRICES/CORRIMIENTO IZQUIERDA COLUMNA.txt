@@ -1,0 +1,10 @@
+
+
+
+// CORRIMIENTO IZQUIERDA COLUMNA
+    public static void corrimiento_izq(int[][]matint, int numeroFila, int numeroColumna) {
+        while (numeroColumna < MAXCOLUMNA-1) {
+            matint[numeroFila][numeroColumna] = matint[numeroFila][numeroColumna+1];
+            numeroColumna++;
+        }
+    }

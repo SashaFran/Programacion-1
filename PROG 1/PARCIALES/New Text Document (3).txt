@@ -1,0 +1,87 @@
+/* Suponer que se tienen dos matrices A y B de secuencias (de caracteres letras minusculas separados por espacios) de tamanio MAXFIL x MAXCOL 
+    (cada fila empieza y termina con caracteres espacios), que estan precargadas, y ademas se tiene/n el/los siguiente/s metodo/s 
+    (se supone que existe/n y esta/n implementado/s):
+     _un metodo que permite obtener el indice inicial de la secuencia que le sigue a la secuencia central (central porque justo al medio del arreglo esta 
+    parte de esa secuencia) de un arreglo de secuencias (de caracteres letras minusculas separados por espacios) de tamanio MAXCOL (que empieza y termina con espacios).
+     _un metodo que retorna el indice inicial de la secuencia cuya cantidad de vocales es la mayor de todas de un arreglo de secuencias (de caracteres letras 
+    minusculas separados por espacios) de tamanio MAXCOL (que empieza y termina con espacios).
+   Se pide realizar un programa completo que (sin utilizar arreglos o matrices auxiliares extras a las mencionadas, ni realizar declaraciones explícitas 
+   de las matrices):
+     _contenga la definicion de el/los encabezado/s de el/los metodo/s mencionado/s como preexistente/s que figura/n en el enunciado (excepto los de carga de 
+    datos en matrices, que solamente se invocan).
+     _en cada fila de A intercambie la secuencia que le sigue a la secuencia central de la fila por la secuencia con mas vocales de dicha fila en B, si entre 
+    estas dos secuencias se cumple que la primera tiene menos vocales que la segunda */
+
+// CONSEJO: Leer con detenimiento, consultar si no se comprende algún punto en particular, dibujar o diagramar las partes a resolver. 
+// Considerar los métodos que se presuponen realizados para ver donde o para que nos sirven, armar un bosquejo en pseudo código del esqueleto general
+
+class ejemplo {
+  	public static final int MAXFIL = 4; // Se consideran con valores por defecto previos 
+	public static final int MAXCOL = 15;  // Se consideran con valores por defecto previos
+  
+    // Se corresponde al método 1 del enunciado que se supone pre existente y que devuelve el índice inicial de la secuencia que le sigue a la secuencia central
+    public static int indiceInicioSecPosteriorCentral(char[] arr) { ... }
+    
+    // Se corresponde al método 2 del enunciado que se supone pre existente y que devuelve el índice inicial de la secuencia con mayor cantidad de vocales de todo el arreglo
+    public static int indiceInicioMayorCantVocales(char[] arr) { ... }
+    
+  	public static void main(String[] args) {
+    	char [][] matA = new char[MAXFIL][MAXCOL]; // Se presuponen pre cargadas
+	    char [][] matB = new char[MAXFIL][MAXCOL]; // Se presuponen pre cargadas
+        
+        for (int fila = 0 ; fila < MAXFIL; fila++) {
+        	int inicioA = indiceInicioSecPosteriorCentral(matA[fila]);
+            int finA = finSecuencia(inicioA, matA[fila]); // Nos retorna el fin de la secuencia
+            
+            int inicioB = indiceInicioMayorCantVocales(matB[fila]);
+            int finB = finSecuencia(inicioB, matB[fila]); // Nos retorna el fin de la secuencia
+            
+            int cantA = cantVocalesSecuencia(inicioA, finA, matA[fila]); // Nos retorna la cantidad de vocales que tiene la secuencia
+            int cantB = cantVocalesSecuencia(inicioB, finB, matB[fila]); // Nos retorna la cantidad de vocales que tiene la secuencia   
+
+            if (cantA < cantB) {
+            	intercambiaSecuencia(inicioA, finA, matA[fila], inicioB, finB, matB[fila]);
+            }
+        }
+    }
+  
+    public static int cantVocalesSecuencia(int inicio, int fin, char[] arr){
+        int contador = 0;
+        int indice = inicio;
+        while (inidice <= fin) {
+        	if (arr[indice] == 'a' || arr[indice] == 'e' || arr[indice] == 'i' || arr[indice] == 'o' || arr[indice] == 'u') {
+          		contador++;
+        	}
+          	indice++;
+      	}
+      	return contador;																					
+  	}
+
+    public static int finSecuencia(int inicio, char[] arr) {
+        int indice = inicio;
+    	while (arr[indice] != ' ') {
+          	indice++;
+      	}
+      	return indice--;
+    }
+  
+  	public static void intercambiaSecuencia(int inicioA, int finA, char[] a, int inicioB, int finB, char[] b) {
+    	int cantElementosA = finA - inicioA + 1;
+        int cantElementosB = finB - inicioB + 1;
+      
+        // En la rama del if considero el intercambio de secuencias del mismo tamaño, en la rama del else debería considerar el caso que no ocurra 
+        // o generar un método más general que contemple ambos casos (Queda como tarea)
+      	if (cantElementosA == cantElementosB) { 
+        	int indice = 0;
+            int temporal = 0;
+          
+            while (indice <= cantElementosA) {
+            	char temporal = b[inicioB + indice];
+                b[inicioB + indice] = a[inicioA + indice];
+                a[inicioA + indice] = temporal;
+              
+            	indice++;
+            }
+        }
+    }
+}

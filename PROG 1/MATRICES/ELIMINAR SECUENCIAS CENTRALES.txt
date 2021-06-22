@@ -1,0 +1,16 @@
+// ELIMINAR SECUENCIAS CENTRALES
+public static void eliminar_secuencias_centrales(char[][] mat){
+int inicio = 0;
+int fin = -1;
+int cant = 0;
+	for (int fil = 0;fil < M;fil++){
+		cant = cantidad_secuencias_fila(mat,fil);
+		if (cant > 0){
+			inicio = obtener_inicio_secuencia(mat,fil,cant/2+1);
+			fin = obtener_fin_secuencia(mat,fil,inicio);
+			for(cant=fin-inicio+1;cant>0;cant--){
+				corrimiento_izq_fila(mat,fil,inicio);
+			}
+		}
+	}
+}

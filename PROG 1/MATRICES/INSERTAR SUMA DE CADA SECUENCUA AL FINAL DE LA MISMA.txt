@@ -1,0 +1,25 @@
+// METODO PARA INSERTAR LA SUMA DE CADA SECUENCIA AL FINAL DE LA MISMA
+
+(EN EL MAIN)
+for (int fila = 0; fila<MAXFILA; fila++) {
+	insertar_suma_secuencia(matriz[fila]);
+}
+
+(METODO FUERA DEL MAIN)
+   public static void insertar_suma_secuencia(int[]arr) {
+    	int inicio = 0;
+    	int fin = 0;
+    	int suma = 0;
+    	while (inicio < MAXCOLUMNA) {
+	        inicio = obtener_inicio_secuencia(arr, fin+1);
+	        if (inicio < MAXCOLUMNA) {
+	        	fin = obtener_fin_secuencia(arr, inicio);
+	        	suma = obtener_suma_secuencia(arr, inicio, fin);
+	        	System.out.println(suma);
+	        	for(int i = fin; i<=fin+1; i++) {
+	        		arr[fin+1] = suma;
+	        	}
+	        }
+	        fin = fin+2;
+    	}
+    }

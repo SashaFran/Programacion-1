@@ -1,0 +1,2 @@
+/* Caracter numero */
+((caracter >='0') && (caracter <='9'))

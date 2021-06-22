@@ -1,0 +1,9 @@
+
+// CORRIMIENTO DERECHA COLUMNA
+	public static void corrimiento_der(int [][] mat, int fila, int columna){
+		int indice = MAXCOLUMNA-1;
+			while (indice > columna){
+			mat[fila][indice] = mat[fila][indice-1];
+			columna--;
+			}			
+		}

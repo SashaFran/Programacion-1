@@ -1,0 +1,150 @@
+package MATRICES;
+
+public class INTENTO_PARCIAL3 {
+	
+	public static final int maxFilas = ..;
+	public static final int maxColumnas = ..;
+	
+	public static void cargarMatriz(int matriz[][]) {
+	}
+	
+	public static int buscarSecuenciaPreviaCentral (int arreglo[]) {
+		int inicioCentral = buscarInicio(arreglo, maxColumnas/2);
+		int finPrevia = buscarFinHaciaAtras(arreglo, inicioCentral-1);
+		int inicioPrevia = buscarInicio(arreglo, finPrevia);
+	}
+	
+	public static void recorrerFilas(int matrizA[][], int matrizB[][]) {
+		for(int a = 0; a < maxFilas; a++) {
+			int indicePrevia = buscarSecuenciaPreviaCentral(matrizA[a]);
+			int indiceMasImpares = secuenciaConMasImpares (matrizB[a], 0);
+			condicionalParaIntercambio(matrizA[a], matrizB[a], indicePrevia, indiceMasImpares)
+		}
+	}
+
+	public static int buscarInicio(int arreglo[], int pos) {
+		int inicio = pos;
+		while (arreglo[inicio] != 0) {
+			inicio--;
+		}
+		while (arreglo[inicio] == 0) {
+			inicio++;
+		}
+		if (inicio < maxColumnas)
+			return inicio;		
+		else
+			return -1;
+	}
+	
+	public static int buscarFin(int arreglo[], int pos) {
+		int fin = pos;
+		while (fin != 0) {
+			fin++;
+		}
+		if (fin < maxColumnas)
+			return fin-1;
+		else
+			return -1;
+	}
+	
+	
+	public static int buscarFinHaciaAtras(int arreglo[], int pos) {
+		int fin = pos;
+		while (fin == 0) {
+			fin--;
+		}
+		if (fin < maxColumnas)
+			return fin;
+		else
+			return -1;
+	}
+	
+	public static int secuenciaConMasImpares (int arreglo[], int pos) {
+		int maxImpares = 0;
+		int inicioConMasImpares = 0;
+		int inicio = buscarInicio(arreglo, pos);
+		while (inicio != -1) {
+			int fin = buscarFin(arreglo, inicio);
+			if (fin != -1) {
+				int cantImpares = 0;
+				for (int a = inicio; a <= fin; a++) {
+					if((arreglo[a]%2) != 0) {
+						cantImpares++;
+					}
+				}
+				if (cantImpares > maxImpares) {
+					maxImpares = cantImpares;
+					inicioConMasImpares = inicio;
+				}
+				inicio = buscarInicio(arreglo, fin+1);
+			}
+		}
+		return inicioConMasImpares;
+	}
+	
+	public static void intercambiarSecuencias (int arregloA[], int arregloB[], int indicePrevia, int indiceMasImpares) {
+		int finPrevia = buscarFin(arregloA, indicePrevia);
+		int finMasImpares = buscarFin(arregloB, indiceMasImpares);
+		int posMasImpares = indiceMasImpares;
+		while(posMasImpares <= finMasImpares) {
+			for(int a = indicePrevia; a <= finPrevia; a++) {
+				arregloA[a] = arregloB[posMasImpares];
+				posMasImpares++;
+			}			
+		}
+	}
+	
+	public static void condicionalParaIntercambio (int arregloA[], int arregloB[], int indicePrevia, int indiceMasImpares) {
+		int finPrevia = buscarFin(arregloA, indicePrevia);
+		int finMasImpares = buscarFin(arregloB, indiceMasImpares);
+		int mayoresCienSecuenciaA = cantidadMayoresCien(arregloA, indicePrevia);
+		int mayoresCienSecuenciaB = cantidadMayoresCien(arregloB, indiceMasImpares);
+		if (mayoresCienSecuenciaA < mayoresCienSecuenciaB) {
+			intercambiarSecuencias(arregloA, arregloB, indicePrevia, indiceMasImpares);
+		}
+	}
+	
+	public static int cantidadMayoresCien (int arreglo[], int indice) {
+		int inicio = indice;
+		int fin = buscarFin (arreglo, indice);
+		int cantMayoresCien = 0;
+		for(int a = inicio; a <= fin; a++) {
+			if(arreglo[a] > 100) {
+				cantMayoresCien++;
+			}
+		}
+		return cantMayoresCien;
+	}
+	
+	public static void main(String[] args) {
+		
+		int matrizA[][] = new int [maxFilas][maxColumnas];
+		int matrizB[][] = new int [maxFilas][maxColumnas];
+		cargarMatriz(matrizA);
+		cargarMatriz(matrizB);
+		recorrerFilas(matrizA, matrizB);
+	}
+
+	
+/*Suponer que se tienen dos matrices A y B de secuencias 
+ (de enteros naturales separados por ceros) de tamanio MAXFIL x MAXCOL 
+ (cada fila empieza y termina con ceros), que estan precargadas, y ademas se tiene/n el/los siguiente/s metodo/s 
+ (se supone que existe/n y esta/n implementado/s):
+ 
+_un metodo que permite obtener el indice inicial de la secuencia previa a la secuencia central 
+(central porque justo al medio del arreglo esta parte de esa secuencia) de un arreglo de secuencias 
+(de enteros naturales separados por ceros) de tamanio MAXCOL (que empieza y termina con ceros).
+
+_un metodo que retorna el indice inicial de la secuencia cuya cantidad de impares es la mayor de todas de un arreglo de secuencias 
+(de enteros naturales separados por ceros) de tamanio MAXCOL (que empieza y termina con ceros).
+Se pide realizar un programa completo que (sin utilizar arreglos o matrices auxiliares extras a las mencionadas, 
+ni realizar declaraciones explícitas de las matrices):
+	
+_contenga la definicion de el/los encabezado/s de el/los metodo/s mencionado/s como preexistente/s 
+que figura/n en el enunciado (excepto los de carga de datos en matrices, que solamente se invocan).
+
+_en cada fila de A intercambie la secuencia previa a la secuencia central de la fila por la secuencia 
+con mas impares de dicha fila en B, si entre estas dos secuencias se cumple que la primera tiene menos 
+numeros mayores que 100 que la segunda (la separacion previa entre secuencias debe mantenerse).
+*/
+} 

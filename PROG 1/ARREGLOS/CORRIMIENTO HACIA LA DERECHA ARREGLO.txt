@@ -1,0 +1,8 @@
+/* Corrimiento a derecha en arreglo */
+public static void corrimiento_der(int [] arrenteros, int pos){
+    int indice = MAX-1;
+    while (indice > pos){
+        arrenteros[indice] = arrenteros[indice-1];
+        indice--;
+    }
+}

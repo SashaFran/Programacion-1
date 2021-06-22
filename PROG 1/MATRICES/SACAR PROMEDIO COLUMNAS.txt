@@ -1,0 +1,11 @@
+
+// SACAR PROMEDIO COLUMNAS
+public static int obtener_promedio_columna(int [][] mat, int columna){
+int promedio,suma;
+suma = 0;
+	for (int fila = 0; fila < MAXFILA; fila++){
+		suma+=mat[fila][columna];
+	}
+	promedio=suma/MAXFILA;
+	return promedio;
+}

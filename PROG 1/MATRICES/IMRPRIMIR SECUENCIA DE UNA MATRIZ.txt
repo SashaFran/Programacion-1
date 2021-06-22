@@ -1,0 +1,8 @@
+
+// IMPRIMIR SUMA DE SECUENCIAS EN UNA MATRIZ
+public static void imprimir_suma_secuencias_matriz(int[][] mat){
+	for (int fila = 0; fila < MAXFILA; fila++){
+		System.out.println("Para la fila "+fila);
+		imprimir_suma_cada_secuencia(mat[fila]);
+	}
+}

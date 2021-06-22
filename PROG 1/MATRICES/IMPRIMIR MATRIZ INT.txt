@@ -1,0 +1,9 @@
+// IMPRIMIR MATRIZ INT
+public static void imprimir_matriz_int(int[][] mat) {
+	System.out.println("-------------------");
+	for (int i = 0 ; i < MAXFILA; i++){
+		for (int j = 0 ; j < MAXCOLUMNA; j++)
+		System.out.print(" "+mat[i][j]);
+		System.out.println("");
+	}
+}

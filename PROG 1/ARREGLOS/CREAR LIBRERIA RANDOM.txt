@@ -1,0 +1,2 @@
+/* Libreria para creacion de arreglo aleatorio */
+    import java.util.Random;

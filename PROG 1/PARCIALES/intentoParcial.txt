@@ -1,0 +1,79 @@
+package Parciales;
+
+public class parcialito {
+	public static final int MAXFIL = ..;
+	public static final int MAXCOL = ..;
+	
+	public static int secuencia_mayor_cantidad_impares (int [] arr) {
+		
+	}
+	
+	public static int obtener_inicio_secuencia (int [] arr, int indice) {
+		int pos = indice;
+		while ((pos < MAXCOL) && (arr[pos] == 0)) {
+			pos++;
+		}
+		if (pos < MAXCOL) {
+			return pos;
+		} else {
+			return -1;
+		}
+	}
+	public static int obtener_fin_secuencia (int [] arr, int indice) {
+		int pos = indice;
+		while ((pos < MAXCOL) && (arr[pos] != 0)) {
+			pos++;
+		}
+		if (pos < MAXCOL) {
+			return pos-1;
+		} else {
+			return -1;
+		}
+	}
+	
+	
+	public static boolean hayDiezImpares(int [] arr, int inicio, int fin) {
+		int contador = 0;
+		for (int i = inicio; i <= fin; i++) {
+			if (arr[i]%2 != 0) {
+				contador++;
+			}
+		}
+		if (contador >= 10) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public static void recorrer_matrizA_buscando(int [] arregloA, int [] arregloB) {
+		int fin, inicio;
+		int inicio_arregloB = secuencia_mayor_cantidad_impares(arregloB);
+		int fin_arregloB = obtener_fin_secuencia(arregloB,inicio_arregloB);
+		inicio = obtener_inicio_secuencia(arregloA,0);
+		while (inicio != -1) {
+			fin = obtener_fin_secuencia(arregloA,inicio);
+			if (fin != -1) {
+				if (hayDiezImpares(arregloA,inicio,fin)) {
+					copiar_valores_arregloB(arregloA,arregloB,fin,inicio_arregloB,fin_arregloB);
+					inicio=
+				}
+			}
+		}
+	}
+	
+	public static void insertar_final_secuencia_impares(int [][] matrizA, int [][] matrizB) {
+		for (int fila = 0; fila < MAXFIL; fila++) {
+			recorrer_matrizA_buscando(matrizA[fila],matrizB[fila]);
+		}
+	}
+	
+	public static void main(String[] args) {
+		int [][] matrizA = new int [MAXFIL] [MAXCOL];
+		int [][] matrizB = new int [MAXFIL] [MAXCOL];
+		cargar_matriz_int_aleatorio(matrizA);
+		cargar_matriz_int_aleatorio(matrizB);
+		insertar_final_secuencia_impares(matrizA,matrizB);
+		imprimir_matriz(matrizA);
+	}
+}

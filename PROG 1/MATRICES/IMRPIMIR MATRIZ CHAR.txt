@@ -1,0 +1,10 @@
+// IMPRIMIR MATRIZ CHAR
+public static void imprimir_matriz_char(char [][] mat){
+		for (int fila = 0; fila < MAXFILA; fila++){
+			System.out.print("|");
+			for (int columna = 0; columna < MAXCOLUMNA; columna++){
+				System.out.print(mat[fila][columna]+"|");
+			}
+			System.out.println("");
+		}
+	}

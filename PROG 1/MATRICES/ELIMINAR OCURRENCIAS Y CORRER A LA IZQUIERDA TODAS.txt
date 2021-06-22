@@ -1,0 +1,33 @@
+
+// ELIMINAR TODAS LAS OCURRENCIAS DE UNA MATRIZ CON CORRIMIENTO A IZQUIERDA
+    public static void obtener_fila_columna_matriz(int[][]matint, int numero) {
+        int fila = 0;
+        int columna = MAXCOLUMNA;
+        while ((fila < MAXFILA) && (columna == MAXCOLUMNA)) {
+            columna = obtener_pos_arreglo(matint[fila], numero);
+            if (columna == MAXCOLUMNA) {
+                fila++;
+            }
+        }
+        if ((fila < MAXFILA) && (columna < MAXCOLUMNA)) {
+            corrimiento_izq(matint, fila, columna);
+        }
+        else {
+        }
+    }
+    
+    public static int obtener_pos_arreglo(int[]arr, int numero) { 
+        int posicion = 0;
+        while ((posicion < MAXCOLUMNA) && (arr[posicion] != numero)) { 
+            posicion++;
+        }
+        
+        return posicion;
+    }
+
+    public static void corrimiento_izq(int[][]matint, int numeroFila, int numeroColumna) {
+        while (numeroColumna < MAXCOLUMNA-1) {
+            matint[numeroFila][numeroColumna] = matint[numeroFila][numeroColumna+1];
+            numeroColumna++;
+        }
+    }

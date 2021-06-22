@@ -1,0 +1,7 @@
+	public static int obtener_pos_arreglo(int[] arr, int numero) {
+		int posicion= 0;
+		while((posicion< MAX) && (arr[posicion] != numero)){
+			posicion++;
+		}
+		return posicion;
+	}

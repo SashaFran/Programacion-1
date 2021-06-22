@@ -1,0 +1,47 @@
+
+// METODO PARA AGREGAR EN UN ARREGLO EL PROMEDIO ENTERO DE LA SUMA DE SECUENCIAS PARES DE UNA MATRIZ
+       public static void recorrerArreglo(int matriz[][],int arrPatron[]){         
+            for( int fila= 0; fila<MAXFILA;fila++){
+                SecuenciaPar(matriz[fila],arrPatron);
+            }
+        }
+
+public static void SecuenciaPar(int arreglo[],int arrPatron[]){
+int inicio=0;
+int fin=-1;
+while(inicio<MAXCOLUMNA){
+inicio = inicioSecuencia(arreglo,fin+1);
+if(inicio<MAXCOLUMNA){
+fin = finSecuencia(arreglo,inicio);
+procesarSecuencia(arreglo,inicio,fin,arrPatron);
+}
+}
+}  
+
+public static void procesarSecuencia(int arreglo[], int inicio,int fin,int arrPatron[]){
+int tamanio= ((fin-inicio)+1);
+int suma=0;
+int promedio=0;
+if((tamanio % 2) == 0){
+for(int i=inicio ; i<=fin ;i++){
+suma = suma + arreglo[i]; 
+promedio=(suma/tamanio);
+System.out.println("promedio" + promedio);
+insertarPromedioArreglo(arrPatron,promedio);
+}
+ }
+ }
+
+public static void insertarPromedioArreglo(int arrPatron[],int promedio){
+            int i=0;
+            boolean insertado = false;
+          // for(int i=0; i<MAXCOLUMNA;i++){
+            while(i<MAXCOLUMNA && insertado==false) {      
+            if(arrPatron[i]==0){
+                insertado= true;
+                    arrPatron[i]=promedio; 
+            }
+            i++;   
+        }               
+    }
+        

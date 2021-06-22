@@ -1,0 +1,232 @@
+// CARGA DE ARREGLO ALETORIO DE SECUENCIAS INT
+public static void cargar_arreglo_aleatorio_secuencias_int(int [] arr){
+	Random r = new Random();
+	arr[0] = 0;
+	arr[MAX-1] = 0;
+	for (int pos = 1; pos < MAX-1; pos++){
+		if (r.nextDouble()>probabilidad_numero){
+			arr[pos]=(r.nextInt(MAXVALOR-MINVALOR+1) + MINVALOR);
+		}
+		else{
+			arr[pos]=0;
+		}
+	}
+}
+
+// CARGA DE ARREGLO ALEATORIO DE SECUENCIAS CHAR
+public static void cargar_arreglo_aleatorio_secuencias_char(char
+[] arr){
+Random r = new Random();
+arr[0] = ' ';
+arr[MAX-1] = ' ';
+for (int pos = 1; pos < MAX-1; pos++){
+if (r.nextDouble()>probabilidad_letra){
+arr[pos]=(char)(r.nextInt(26) + 'a');
+}
+else{
+arr[pos]=' ';
+}
+}
+}
+
+// IMPRIMIR ARREGLO DE SECUENCIAS INT
+public static void imprimir_arreglo_secuencias_int(int [] arr){
+	System.out.print("Arreglo de secuencias int\n|");
+	for (int pos = 0; pos < MAX; pos++){
+		System.out.print(arr[pos]+"|");
+	}
+	System.out.print("\n");
+}
+
+// IMPRIMIR ARREGLO DE SECUENCIAS CHAR
+public static void imprimir_arreglo_secuencias_char(char [] arr){
+	System.out.print("Arreglo de secuencias char\n|");
+	for (int pos = 0; pos < MAX; pos++){
+		System.out.print(arr[pos]+"|");
+	}
+	System.out.print("\n");
+}
+
+// BUSCAR INICIO
+    public static int buscar_pos_inicio(int[]arr, int num){
+        int pos = 0;
+        while ((pos < MAX) && (arr[pos] != num)){
+            pos++;
+            }
+        System.out.println(pos);
+        return pos;
+    }
+
+// BUSCAR FINAL
+    public static int buscar_pos_final(int[]arr, int num){
+        int pos = MAX-1;
+        while ((pos >= 0) && (arr[pos] != num)){
+            pos--;
+            }
+        System.out.println(pos);
+        return pos;
+    }
+
+// OBTENER SUMA DE LA SECUENCIA
+public static int obtener_suma_secuencia(int[] arr, int inicio, int fin){
+	int suma = 0;
+	while (inicio <= fin){
+		suma+=arr[inicio];
+		inicio++;
+	}
+	return suma;
+	}
+
+// IMPRIMIR SUMA CADA SECUENCIA
+public static void imprimir_suma_cada_secuencia(int[] arr){
+	int inicio,fin,suma;
+	inicio = 0;
+	fin = -1;
+	while ((inicio < MAX)){
+		inicio = obtener_inicio_secuencia(arr,fin+1); //REUTILIZAMOS
+		if (inicio < MAX){
+			fin = obtener_fin_secuencia(arr,inicio); //REUTILIZAMOS
+			suma = obtener_suma_secuencia(arr,inicio,fin);
+			System.out.println("La suma de la secuencia de "+inicio+" a "+fin+" es "+suma);
+		}
+	}
+}
+
+// IMPRIMIR SUMA MAYOR DE SECUENCIA
+public static void imprimir_suma_mayor_secuencia(int[] arr) {
+int inicio, fin, suma;
+inicio = 0;
+fin = -1;
+int mayorSuma = 0;
+int inicioMayor = 0;
+int finMayor = 0;
+	while ((inicio < MAX - 1)) {
+            inicio = obtener_inicio_secuencia(arr, fin + 1);
+            if (inicio < MAX - 1) {
+                fin = obtener_fin_secuencia(arr, inicio);
+                suma = obtener_suma(arr, inicio, fin);
+                if (suma > mayorSuma) {
+                    mayorSuma = suma;
+                    inicioMayor = inicio;
+                    finMayor = fin;
+                }
+            }
+        }
+	System.out.println("La mayor suma de la secuencia de " + inicioMayor + " a " + finMayor + " es " + mayorSuma);
+}
+
+// OBTENER INICIO DE LA SECUENCIA
+public static int obtener_inicio_secuencia(int[] arr, int inicio){
+	while ((inicio < MAX)&&(arr[inicio]==0)){
+		inicio++;
+	}
+	return inicio;
+	}
+}
+
+// OBTENER FINAL DE LA SECUENCIA
+public static int obtener_fin_secuencia(int[] arr, int inicio){
+	while ((inicio < MAX)&&(arr[inicio]!=0)){
+		inicio++;	
+	}
+	return inicio-1;
+}
+
+// ELIMINAR SECUENCIA
+    public static void eliminar_secuencia(int[] arr, int entero) {
+        int inicio, fin;
+        inicio = 0;
+        fin = -1;
+        while ((inicio < MAX - 1)) {
+            inicio = obtener_inicio_secuencia(arr, fin + 1);
+            if (inicio < MAX - 1) {
+                fin = obtener_fin_secuencia(arr, inicio);
+                if ((fin - inicio + 1) == entero) {
+                    corrimiento_izq(arr, inicio, entero);
+                }
+            }
+        }
+    }
+
+// BUSCAR UNA SECUENCIA DE TAMAÑO INGRESADO POR EL USUARIO 
+    public static void buscar_secuencia(int[] arr, int[] arrnuevo, int entero) {
+        int inicio, fin;
+        inicio = 0;
+        fin = -1;
+        int pos = 0;
+        while ((inicio < MAX - 1)) {
+            inicio = obtener_inicio_secuencia(arr, fin + 1);
+            if (inicio < MAX - 1) {
+                fin = obtener_fin_secuencia(arr, inicio);
+                if ((fin - inicio) == (entero - 1)) {
+                    for (int i = inicio; i <= fin; i++) {
+                        arrnuevo[pos] = arr[i];
+                        pos++;
+                    }
+                }
+            }
+        }
+    }
+
+// CORROBORAR QUE DOS SECUENCIAS SEAN IGUALES
+    public static boolean secuencia_cumple_patron(int[] arr, int[] patron, int inicio, int fin) {
+        boolean iguales = true;
+        int i = 0;
+        while (((inicio + i) <= fin) && (arr[inicio + i] == patron[i])) {
+            i++;
+        }
+        if (((inicio + i) > fin) && (patron[i] == 0)) {
+            iguales = true;
+        } else {
+            iguales = false;
+        }
+        return iguales;
+    }
+
+// ELIMINAR SECUENCIAS DESCENDENTES
+    public static void eliminar_secuencias_descendentes(int[] arr) {
+        int inicio, fin;
+        inicio = 0;
+        fin = -1;
+        while ((inicio < MAX - 1)) {
+            inicio = obtener_inicio_secuencia(arr, fin + 1);
+            if (inicio < MAX - 1) {
+                fin = obtener_fin_secuencia(arr, inicio);
+                if (es_descendente(arr, inicio, fin) == true) {
+                    corrimiento_izq(arr, inicio, fin);
+                }
+            }
+        }
+    }
+
+
+    public static boolean es_descendente(int[] arr, int inicio, int fin) {
+        int i = inicio;
+        while ((i < fin) && (arr[i + 1] < arr[i])) {
+            i++;
+        }
+        return (i==fin);
+    }
+
+// ENCONTRAR ANTEULTIMA SECUENCIA
+public static void encontrar_anteultima_secuencia(char [][] mat, int pos){
+        for (int fila = 0; fila < MAXFILA; fila++) {
+            encontrar_anteultima_secuencia_fila(mat[fila], pos);
+        }
+    }
+    
+    public static void encontrar_anteultima_secuencia_fila(char[] arr, int pos) {
+        int fin = MAXCOLUMNA;
+        int inicio = MAXCOLUMNA - 1;
+        int i = 0;
+        while ((0 <= inicio)&&(i<pos)) {
+            inicio = obtener_inicio_secuencia(arr, fin - 1);
+            if (inicio >= 0) {
+                fin = obtener_fin_secuencia(arr, inicio);
+                i++;
+            }
+        }
+        System.out.println("Inicio anteultima secuencia: [" + inicio + "]");
+        System.out.println("Fin anteultima secuencia: [" + fin + "]");
+    }
+	

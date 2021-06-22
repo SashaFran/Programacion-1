@@ -1,0 +1,15 @@
+// CARGAR MATRIZ INT DE MANERA MANUAL
+public static void cargar_matriz_int(int [][] mat){
+		BufferedReader entrada = new BufferedReader(new InputStreamReader(System.in));
+		try{
+			for (int fila = 0; fila < MAXFILA; fila++){
+				for (int columna = 0; columna < MAXCOLUMNA; columna++){
+					System.out.println("Ingrese un entero para la posicion ["+fila+"]["+columna+"]");
+					mat[fila][columna] = Integer.valueOf(entrada.readLine());
+				}
+			}
+		}
+		catch(Exception exc){
+			System.out.println(exc);
+		}
+	}

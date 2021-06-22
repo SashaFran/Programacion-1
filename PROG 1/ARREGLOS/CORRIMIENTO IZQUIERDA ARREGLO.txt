@@ -1,0 +1,7 @@
+public static void corrimiento_izq(int[] arrenteros, int pos){
+	int indice= MIN;
+	while(indice<pos){
+		arrenteros[indice] = arrenteros[indice+1];
+		indice++;
+	}
+}

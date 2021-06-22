@@ -1,0 +1,30 @@
+// INTERCAMBIAR ORDEN DE FILAS Y COLUMNAS DE UNA MATRIZ
+	public static void cambiar_orden(int[][] mat) {
+		int iniciofila = 0;
+		int iniciocol = 0;
+		int finfila = MAXFILA-1;
+		int fincol = MAXCOLUMNA-1;
+		for (int fila = 0; fila<=MAXFILA; fila++) {
+			while(iniciofila < finfila) {
+				intercambiarPosiciones (mat[fila], iniciofila, finfila);
+				iniciofila++;
+				finfila--;
+			}
+			for (int columna = 0; columna<=MAXCOLUMNA; columna++) {
+				while(iniciocol < fincol) {
+					intercambiarPosiciones (mat[columna], iniciocol, fincol);
+					iniciocol++;
+					fincol--;
+				}
+
+			}
+		}
+	}
+	
+
+	public static void intercambiarPosiciones(int [] mat, int p1, int p2) {
+		int aux = mat[p1];
+		mat[p1] = mat[p2];
+		mat[p2] = aux;
+	}
+

@@ -1,0 +1,19 @@
+
+
+// METODO PARA ENCONTRAR NUMEROS PARES EN UNA MATRIZ
+cantidad_pares= encontrar_numeros_pares(matint , cantidad_pares);
+	System.out.println("la cantidad de numeros pares es: " + cantidad_pares);
+}
+		 
+		 
+		 
+public static int encontrar_numeros_pares(int[][]matint, int cantidad_pares){
+	for(int fila=0; fila <MAX_FILA; fila++) {
+		for(int columna=0; columna<MAX_COLUMNA; columna++) {
+			if(matint[fila][columna]%2==0) {
+				cantidad_pares ++; 
+			}
+		}
+	}			 
+	return cantidad_pares;
+}

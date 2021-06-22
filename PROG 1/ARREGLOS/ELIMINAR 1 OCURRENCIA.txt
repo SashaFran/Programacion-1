@@ -1,0 +1,27 @@
+	
+public static void eliminar_ocurrencia(int [] arrenteros, int numero){
+	int pos;	
+	pos = obtener_pos_arreglo(arrenteros, numero);
+	if ((pos>=0)&&(pos<MAX)){
+		corrimiento_Izq(arrenteros,pos);	
+	}
+}
+
+
+
+public static int obtener_pos_arreglo(int [] arr, int numero){
+	int posicion = 0;
+	while ((posicion < MAX) && (arr[posicion] != numero)){
+		posicion++;
+	}
+	return posicion;
+}
+
+
+public static void corrimiento_Izq(int[]arr,int posicion){
+	int pos = posicion;
+	while(pos < MAX-1){
+		arr[pos] = arr[pos+1];
+		pos++;
+	}
+}

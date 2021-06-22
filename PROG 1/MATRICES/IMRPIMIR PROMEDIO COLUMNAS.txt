@@ -1,0 +1,9 @@
+
+// IMPRIMIR PROMEDIOS COLUMNAS
+public static void imprimir_por_pantalla_promedios_matriz(int [][] mat){
+int promedio;
+	for (int columna = 0; columna < MAXCOLUMNA; columna++){
+		promedio = obtener_promedio_columna(mat,columna);
+		System.out.println("el promedio de la columna "+columna+" es "+promedio);
+	}
+}

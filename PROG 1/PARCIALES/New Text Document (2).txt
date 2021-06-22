@@ -1,0 +1,6 @@
+        Suponer que se tienen dos matrices A y B de secuencias (de enteros naturales separados por ceros) de tamanio MAXFIL x MAXCOL (cada fila empieza y termina con ceros), que estan precargadas, y ademas se tiene/n el/los siguiente/s metodo/s (se supone que existe/n y esta/n implementado/s):
+        _un metodo que permite obtener el indice inicial de la secuencia previa a la secuencia central (central porque justo al medio del arreglo esta parte de esa secuencia) de un arreglo de secuencias (de enteros naturales separados por ceros) de tamanio MAXCOL (que empieza y termina con ceros).
+        
+        Se pide realizar un programa completo que (sin utilizar arreglos o matrices auxiliares extras a las mencionadas, ni realizar declaraciones explícitas de las matrices):
+        _contenga la definicion de el/los encabezado/s de el/los metodo/s mencionado/s como preexistente/s que figura/n en el enunciado (excepto los de carga de datos en matrices, que solamente se invocan).
+        _en cada fila de A inserte al final de cada secuencia con cantidad par de numeros pares, la secuencia previa a la secuencia central que se encuentra de dicha fila en B.

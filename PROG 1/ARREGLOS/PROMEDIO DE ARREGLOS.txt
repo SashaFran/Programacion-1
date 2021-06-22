@@ -1,0 +1,7 @@
+public static int promedio_arreglo(int[] arr){
+		int suma = 0;
+		for(int pos = 0; pos < MAX; pos++){
+			suma+=arr[pos];
+		}
+		return(suma/MAX);
+}

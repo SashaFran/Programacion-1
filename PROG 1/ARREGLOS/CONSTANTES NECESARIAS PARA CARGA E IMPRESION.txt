@@ -1,0 +1,4 @@
+/* Constantes necesarias para carga e impresion de arreglos (valores a modificar)*/
+public static final int MAX = 10;
+public static final int MAXVALOR = 10;
+public static final int MINVALOR = 1;

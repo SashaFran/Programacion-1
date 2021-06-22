@@ -1,0 +1,13 @@
+// INSERCION
+public static void ordenar_arreglo_insercion(int[]arr) {
+int aux, j;
+	for (int i = 1; i < MAX; i++) {
+		aux = arr[i];
+		j = i - 1;
+		while ((j >= 0) && (arr[j] > aux)){
+			arr[j+1] = arr[j];
+			j--;
+		}
+		arr[j+1] = aux;
+}
+}

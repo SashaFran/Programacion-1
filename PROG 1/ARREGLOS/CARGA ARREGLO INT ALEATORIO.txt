@@ -1,0 +1,7 @@
+/* Carga de arreglo int aleatorio */
+public static void cargar_arreglo_aleatorio_int(int [] arr){
+    Random r = new Random();
+    for (int pos = 0; pos < MAX; pos++){
+        arr[pos]=(r.nextInt(MAXVALOR-MINVALOR+1) + MINVALOR);
+    }
+}

@@ -1,0 +1,25 @@
+// ORDENAR UNA MATRIZ ENTRE 2 COLUMNAS Y FILA INGRESADAS POR EL USUARIO
+
+(EN EL MAIN)
+for (int i = columna1; columna1<columna2; columna1++) {
+				ordenar_matriz_fila_seleccion(matriz, fila, columna1, columna2);
+			}
+
+(METODO)
+    public static void ordenar_matriz_fila_seleccion(int [][] mat, int fila, int columna1, int columna2) {
+    	int pos_menor, tmp;
+    	for (int i = 0; i < columna2; i++) {
+    		pos_menor = i;
+    		for (int j = i + 1; j < columna2; j++){
+    			if (mat[fila][j] < mat[fila][pos_menor]) {
+    				pos_menor = j;
+    			}
+    		}
+    		if (pos_menor != i){
+    			tmp = mat[fila][i];
+    			mat[fila][i] = mat[fila][pos_menor];
+    			mat[fila][pos_menor] = tmp;
+    		}
+    	}
+    }
+}

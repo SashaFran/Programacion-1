@@ -1,0 +1,6 @@
+// CORRIMIENTO IZQUIERDA FILA
+public static void corrimiento_izq_fila(char[][] mat, int fil, int pos){
+	for (int col=pos;col<N-1;col++){
+		mat[fil][col]=mat[fil][col+1];
+	}
+}

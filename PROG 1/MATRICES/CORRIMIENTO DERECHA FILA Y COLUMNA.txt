@@ -1,0 +1,8 @@
+// CORRIMIENTO DERECHA FILA Y COLUMNA
+public static void corrimiento_der_fila_columna(int [] arrenteros, int pos){
+int indice = MAXCOLUMNA-1;
+	while (indice > pos){
+	arrenteros[indice] = arrenteros[indice-1];
+	indice--;
+	}
+}

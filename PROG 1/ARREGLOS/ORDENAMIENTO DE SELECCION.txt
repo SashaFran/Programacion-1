@@ -1,0 +1,17 @@
+// SELECCION
+public static void ordenar_arreglo_seleccion(int[]arr) {
+int pos_menor, tmp;
+  for (int i = 0; i < MAX; i++) {
+    pos_menor = i;
+    for (int j = i + 1; j < MAX; j++){
+      if (arr[j] < arr[pos_menor]) {
+        pos_menor = j;
+       }
+   }
+   if (pos_menor != i){
+     tmp = arr[i];
+     arr[i] = arr[pos_menor];
+     arr[pos_menor] = tmp;
+   }
+  }
+}

@@ -1,0 +1,6 @@
+/* Impresion de arreglo int */
+public static void imprimir_arreglo_int(int[]arr) {
+    for (int pos = 0; pos < MAX; pos++) {
+        System.out.println("arrenteros["+pos+"]=>: "+arr[pos]);
+    }
+}

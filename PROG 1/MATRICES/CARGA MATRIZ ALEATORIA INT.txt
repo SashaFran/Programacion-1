@@ -1,0 +1,11 @@
+	
+
+// CARGAR MATRIZ ALEATORIA INT
+public static void cargar_matriz_aleatorio_int(int [][] mat){
+		Random r = new Random();
+		for (int fila = 0; fila < MAXFILA; fila++){
+			for (int columna = 0; columna < MAXCOLUMNA; columna++){
+				mat[fila][columna]=(r.nextInt(MAXVALOR+MINVALOR-1) + MINVALOR);
+			}
+		}
+	}

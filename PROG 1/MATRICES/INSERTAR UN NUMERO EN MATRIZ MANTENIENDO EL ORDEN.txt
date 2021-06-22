@@ -1,0 +1,24 @@
+// INSERTAR UN NUMERO EN UNA MATRIZ MANTENIENDO ORDEN (SIN USAR METODOS DE ORDENAMIENTO)
+    public static void insertar_numero_arreglo(int [] mat, int numero){
+        int pos=obtener_pos_arreglo(mat, numero);
+        if (pos<MAXCOLUMNA){
+            corrimiento_der_fila_columna(mat,pos);
+            mat[pos]=numero;
+        }
+    }
+     
+    public static int obtener_pos_arreglo(int[] arr, int numero){
+        int pos = 0;
+        while ((pos<MAXCOLUMNA)&&(arr[pos]<numero)){
+            pos++;
+        }
+        return pos;
+    }
+    
+    public static void corrimiento_der_fila_columna(int [] mat, int pos){
+    	int indice = MAXCOLUMNA-1;
+    		while (indice > pos){
+    		mat[indice] = mat[indice-1];
+    		indice--;
+    		}
+    	}

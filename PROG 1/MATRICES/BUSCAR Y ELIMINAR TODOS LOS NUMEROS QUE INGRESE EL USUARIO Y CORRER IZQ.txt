@@ -1,0 +1,26 @@
+public static void buscar_ocurrencia_en_fila(int[][] mat, int numero) {
+        int fila = 0;
+        int columna = MAXCOLUMNA;
+        while ((fila < MAXFILA) && (columna == MAXCOLUMNA)) {
+            buscar_ocurrencia_en_columna(mat[fila], numero);
+            if (columna == MAXCOLUMNA) {
+                fila++;
+            }
+        }
+        
+    }
+
+    public static void buscar_ocurrencia_en_columna(int[] mat, int numero) {
+        for (int posColumna = 0; posColumna < MAX; posColumna++) {
+            if (mat[posColumna] == numero) {
+                corrimiento_izq(mat, posColumna);
+            }
+        }
+    }
+
+    public static void corrimiento_izq(int[] matint, int posColumna) {
+        for (int pos = posColumna; pos < MAX - 1; pos++) {
+            matint[pos] = matint[pos + 1];
+        }
+    }
+}
