@@ -14,19 +14,17 @@ public static void cargar_arreglo_aleatorio_secuencias_int(int [] arr){
 }
 
 // CARGA DE ARREGLO ALEATORIO DE SECUENCIAS CHAR
-public static void cargar_arreglo_aleatorio_secuencias_char(char
-[] arr){
-Random r = new Random();
-arr[0] = ' ';
-arr[MAX-1] = ' ';
-for (int pos = 1; pos < MAX-1; pos++){
-if (r.nextDouble()>probabilidad_letra){
-arr[pos]=(char)(r.nextInt(26) + 'a');
-}
-else{
-arr[pos]=' ';
-}
-}
+public static void cargar_arreglo_aleatorio_secuencias_char(char[] arr){
+	Random r = new Random();
+	arr[0] = ' ';
+	arr[MAX-1] = ' ';
+	for (int pos = 1; pos < MAX-1; pos++){
+		if (r.nextDouble()>probabilidad_letra){
+		arr[pos]=(char)(r.nextInt(26) + 'a');
+		}else{
+		arr[pos]=' ';
+		}
+	}
 }
 
 // IMPRIMIR ARREGLO DE SECUENCIAS INT
@@ -94,12 +92,12 @@ public static void imprimir_suma_cada_secuencia(int[] arr){
 
 // IMPRIMIR SUMA MAYOR DE SECUENCIA
 public static void imprimir_suma_mayor_secuencia(int[] arr) {
-int inicio, fin, suma;
-inicio = 0;
-fin = -1;
-int mayorSuma = 0;
-int inicioMayor = 0;
-int finMayor = 0;
+	int inicio, fin, suma;
+	inicio = 0;
+	fin = -1;
+	int mayorSuma = 0;
+	int inicioMayor = 0;
+	int finMayor = 0;
 	while ((inicio < MAX - 1)) {
             inicio = obtener_inicio_secuencia(arr, fin + 1);
             if (inicio < MAX - 1) {
